@@ -11,5 +11,9 @@ class AAACase16 {
         int m=exa.getMoney();
         System.out.println("money="+m);
     }
+
+    public double print(float len) {
+        return 3.14*len*len;
+    }
 }
 

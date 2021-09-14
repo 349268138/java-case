@@ -3,6 +3,7 @@ package charpter4;
 class XiyoujiRenWu {
     float height,weight;
     String head, ear,hand,foot, mouth;
+    PersonName name;
     void speak(String s) {
         System.out.println(s);
     }
