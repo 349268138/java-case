@@ -11,6 +11,20 @@ import java.util.List;
 public class ExceptionTest {
     public static void main(String[] args) {
         tryCatchFinallyTest();
+
+        throwRuntimeExceptionTest();
+
+        try {
+            throwCheckExceptionTest();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            throwMyExceptionTest();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void tryCatchFinallyTest() {
@@ -32,5 +46,17 @@ public class ExceptionTest {
         } finally {
             System.out.println("finally execute");
         }
+    }
+
+    public static void throwRuntimeExceptionTest() {
+        throw new RuntimeException("runtime exception");
+    }
+
+    public static void throwCheckExceptionTest() throws Exception {
+        throw new Exception("exception");
+    }
+
+    public static void throwMyExceptionTest() throws Exception {
+        throw new MyException("myException");
     }
 }
