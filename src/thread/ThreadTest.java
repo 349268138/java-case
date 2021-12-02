@@ -1,5 +1,8 @@
 package thread;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 /**
  * @author wangjinping
  * @Description
@@ -7,7 +10,23 @@ package thread;
  */
 public class ThreadTest {
     public static void main(String[] args) {
-        runnableTest();
+        callableTest();
+    }
+
+    public static void callableTest() {
+        FutureTask<Long> futureTask = new FutureTask(new MyCallable());
+        Thread thread = new Thread(futureTask);
+        System.out.println("call start method");
+        thread.start();
+        System.out.println("start method complete");
+        try {
+            Long timestamp = futureTask.get();
+            System.out.println("get method complete. timestamp: " + timestamp);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void runnableTest() {
