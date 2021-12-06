@@ -18,47 +18,50 @@ public class SafeTicket {
     }
 
     // 线程安全实现方式1
-    public void minus() {
+    public boolean minus() {
         System.out.println(Thread.currentThread().getName() + "-enter");
         synchronized (this) {
             if(count <= 0) {
-                return;
+                return false;
             }
 
             long number = count;
             holdRandom();
             count = count - 1;
             System.out.println(Thread.currentThread().getName() + ", sell " + number);
+            return true;
         }
     }
 
     // 线程安全实现方式2
-//    public synchronized void minus() {
+//    public synchronized boolean minus() {
 //        System.out.println(Thread.currentThread().getName() + "-enter");
 //        if(count <= 0) {
-//            return;
+//            return false;
 //        }
 //
 //        long number = count;
 //        holdRandom();
 //        count = count - 1;
 //        System.out.println(Thread.currentThread().getName() + ", sell " + number);
+//        return true;
 //    }
 
     // 线程安全实现方式3
-//    public void minus() {
+//    public boolean minus() {
 //        System.out.println(Thread.currentThread().getName() + "-enter");
 //
 //        lock.lock();
 //        try {
 //            if (count <= 0) {
-//                return;
+//                return false;
 //            }
 //
 //            long number = count;
 //            holdRandom();
 //            count = count - 1;
 //            System.out.println(Thread.currentThread().getName() + ", sell " + number);
+//            return true;
 //        } finally {
 //            lock.unlock();
 //        }

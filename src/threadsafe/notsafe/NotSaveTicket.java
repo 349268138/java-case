@@ -14,15 +14,16 @@ public class NotSaveTicket {
         this.count = count;
     }
 
-    public void minus() {
+    public boolean minus() {
         if(count <= 0) {
-            return;
+            return false;
         }
 
         long number = count;
         holdRandom();
         count = count - 1;
         System.out.println(Thread.currentThread().getName() + ", sell " + number);
+        return true;
     }
 
     public long getCount() {

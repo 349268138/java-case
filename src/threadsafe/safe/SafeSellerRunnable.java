@@ -14,8 +14,7 @@ public class SafeSellerRunnable implements Runnable {
 
     @Override
     public void run() {
-        while(ticket.getCount() > 0) {
-            ticket.minus();
+        while(ticket.minus()) {
             hold(100);
         }
     }
